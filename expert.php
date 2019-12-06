@@ -34,10 +34,10 @@ new_exercise(4);
 // The print_r($week) should give:  Array ( [0] => mon [1] => tues [2] => wednes [3] => thurs [4] => fri [5] => satur [6] => sun )
 // Look up whats going wrong with this code, and then fix it, with ONE CHARACTER!
 
-foreach($week as $day) {
-    $day = substr($day, 1, strlen($day)-3);
+foreach($week as &$day) {
+    $day = substr($day, 0, strlen($day)-3);
 }
-
+//added & symbol, passes a variable by reference to a funstion so the function can modify the variable
 print_r($week);
 
 new_exercise(5);
@@ -57,20 +57,16 @@ new_exercise(6);
 // The fixed code should echo the following at the bottom:
 // Here is the name: $name - $name2
 // $name variables are decided as seen in the code, fix all the bugs whilst keeping the functionality!
-$arr = [];
 
-
-
-function combineNames($str1 = "", $str2 = "") {
+function combineNames($str1 = '', $str2 = '') {
     $params = [$str1, $str2];
     foreach($params as $param) {
-        if ($param == "") {
+        if ($param == '') {
             $param = randomHeroName();
         }
     }
-    echo implode($params, " - ");
+    echo implode($params, ' - ');
 };
-
 
 function randomGenerate($arr, $amount) {
     for ($i = $amount; $i > 0; $i--) {
@@ -79,18 +75,18 @@ function randomGenerate($arr, $amount) {
 
     return $amount;
 };
-    
+
 function randomHeroName()
 {
-    $hero_firstnames = ["captain", "doctor", "iron", "Hank", "ant", "Wasp", "the", "Hawk", "Spider", "Black", "Carol"];
-    $hero_lastnames = ["America", "Strange", "man", "Pym", "girl", "hulk", "eye", "widow", "panther", "daredevil", "marvel"];
-    $heroes = [$hero_firstnames, $hero_lastnames];
-    $randname = $heroes[rand(0,count($heroes[0]))][rand(0, count($heroes[1]))];
+    $hero_firstnames = ['captain', 'doctor', 'iron', 'Hank', 'ant', 'Wasp', 'the', 'Hawk', 'Spider', 'Black', 'Carol'];
+    $hero_lastnames = ['America', 'Strange', 'man', 'Pym', 'girl', 'hulk', 'eye', 'widow', 'panther', 'daredevil', 'marvel'];
+    $heroes = array($hero_firstnames, $hero_lastnames);
+    $randname = $heroes[rand(0,count($heroes))][rand(0, 10)];
 
     return $randname;
-    
 };
-echo 'Here is the name: ' . randomHeroName();
+
+echo 'Here is the name: ' . combineNames();
 
 
 new_exercise(7);
@@ -144,12 +140,14 @@ new_exercise(10);
 $areTheseFruits = ['apple', 'bear', 'beef', 'banana', 'cherry', 'tomato', 'car'];
 $validFruits = ['apple', 'pear', 'banana', 'cherry', 'tomato'];
 //from here on you can change the code
-for($i=0; $i <= count($areTheseFruits); $i++) {
+$var = count($areTheseFruits);
+
+for($i=0; $i <= $var; $i++) {
     if(!in_array($areTheseFruits[$i], $validFruits)) {
         unset($areTheseFruits[$i]);
-        $areTheseFruits = array_values($areTheseFruits);
+        
     }
     
-}
+};
 print_r($areTheseFruits);
 var_dump($areTheseFruits);//do not change this

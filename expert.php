@@ -145,7 +145,6 @@ $var = count($areTheseFruits);
 for($i=0; $i <= $var; $i++) {
     if(!in_array($areTheseFruits[$i], $validFruits)) {
         unset($areTheseFruits[$i]);
-        
     }
     
 };

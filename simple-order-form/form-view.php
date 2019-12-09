@@ -1,8 +1,4 @@
 
-
-
-
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -27,7 +23,14 @@
             </li>
         </ul>
     </nav>
-    <form method="post" action="index.php">
+    <div class="alert alert-danger">
+    <!-- <span> <?php echo $emailErr;?> <br></span>
+    <span> <?php echo $streetErr;?> </span>
+    <span> <?php echo $streetNumberErr; ?> </span>
+    <span> <?php echo $cityErr; ?> </span>
+    <span> <?php echo $zipcodeErr; ?> </span> -->
+    </div>
+    <form method="post" action="<?php echo htmlspecialchars('index.php'); //this protects against injecting harmful code by hackers?>">
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="email">E-mail:</label>

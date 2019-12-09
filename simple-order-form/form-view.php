@@ -1,4 +1,13 @@
+<?php
+    session_start();
+    
+    $email = $_SESSION['email'];
+    $street = $_SESSION['street'];
+    $streetNumber = $_SESSION['streetnumber'];
+    $city = $_SESSION['city'];
+    $zipcode = $_SESSION['zipcode'];
 
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -29,7 +38,7 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="email">E-mail:</label><span class='error'><?php echo $emailErr1, $emailErr2; ?></span>
-                <input type="text" id="email" name="email" class="form-control" value="<?php echo $_SESSION['email']; ?>"/>
+                <input type="text" id="email" name="email" class="form-control" value="<?php echo isset($_POST['email']) ? $email : ''; ?>"/>
             </div>
             <div></div>
         </div>
@@ -40,21 +49,21 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="street">Street:</label><span class="error"><?php echo $streetErr;?></span>
-                    <input type="text" name="street" id="street" class="form-control" value="<?php echo $_SESSION['street']; ?>">
+                    <input type="text" name="street" id="street" class="form-control" value="<?php echo isset($_POST['street']) ? $street : ''; ?>">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="streetnumber">Street number:</label><span class="error"><?php echo $streetNumberErr1, $streetNumberErr2; ?></span>
-                    <input type="text" id="streetnumber" name="streetnumber" class="form-control" value="<?php echo $_SESSION['streetnumber']; ?>">
+                    <input type="text" id="streetnumber" name="streetnumber" class="form-control" value="<?php echo isset($_POST['streetnumber']) ? $streetNumber : ''; ?>">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="city">City:</label><span class="error"> <?php echo $cityErr; ?> </span>
-                    <input type="text" id="city" name="city" class="form-control" value="<?php echo $_SESSION['city']; ?>">
+                    <input type="text" id="city" name="city" class="form-control" value="<?php echo isset($_POST['city']) ? $city : ''; ?>">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="zipcode">Zipcode</label><span class="error"> <?php echo $zipcodeErr1, $zipcodeErr2; ?> </span>
-                    <input type="text" id="zipcode" name="zipcode" class="form-control" value="<?php echo $_SESSION['zipcode']; ?>">
+                    <input type="text" id="zipcode" name="zipcode" class="form-control" value="<?php echo isset($_POST['zipcode']) ? $zipcode : ''; ?>">
                 </div>
             </div>
         </fieldset>

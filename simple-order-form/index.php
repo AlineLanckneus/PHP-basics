@@ -2,12 +2,14 @@
 //this line makes PHP behave in a more strict way
 declare(strict_types=1);
 //we are going to use session variables so we need to enable sessions
-session_start();
-echo session_id();
-//declaring variables and setting them to empty strings
-$email = $street = $streetNumber = $city = $zipcode = "";
-$emailErr1 = $emailErr2 = $streetErr = $streetNumberErr1 = $streetNumberErr2 = $cityErr = $zipcodeErr1 = $zipcodeErr2 = "";
 
+
+session_start();
+//declaring variables and setting them to empty strings
+    $email = $street = $streetNumber = $city = $zipcode = "";
+    $emailErr1 = $emailErr2 = $streetErr = $streetNumberErr1 = $streetNumberErr2 = $cityErr = $zipcodeErr1 = $zipcodeErr2 = "";
+
+ 
 function test_input($data) {
         $data = trim($data);
         $data = stripslashes($data);
@@ -15,17 +17,17 @@ function test_input($data) {
         return $data;
         }
 
-    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    if(filter_has_var(INPUT_POST, 'submit')){
         //check for email input
         if(empty($_POST['email'])){
             $emailErr1 = '* E-mail is required<br>';
-            echo 'email is required<br>';
+            
         } else {
             $email = test_input($_POST['email']);
             //check for email validity
             if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
                 $emailErr2 = '* Invalid email format';
-                echo 'invalid email format';
+                
             }
         }
         if(empty($_POST['street'])){
@@ -66,11 +68,12 @@ function test_input($data) {
                 $zipcodeErr2 = '* Zipcode needs to be number format<br>';
             }
         }
-        
-        $_SESSION['street'] = $street;
-        $_SESSION['streetnumber'] = $streetNumber;
-        $_SESSION['city'] = $city;
-        $_SESSION['zipcode'] = $zipcode;
+        $_SESSION['email'] = htmlspecialchars($_POST['email']);
+        $_SESSION['street'] = htmlspecialchars($_POST['street']);
+        $_SESSION['streetnumber'] = htmlspecialchars($_POST['streetnumber']);
+        $_SESSION['city'] = htmlspecialchars($_POST['city']);
+        $_SESSION['zipcode'] = htmlspecialchars($_POST['zipcode']);
+
         };
 
 

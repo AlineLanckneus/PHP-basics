@@ -8,6 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" type="text/css"
         rel="stylesheet"/>
+    <link rel="stylesheet" href="styles.css">
     <title>Order food & drinks</title>
 </head>
 <body>
@@ -23,12 +24,12 @@
             </li>
         </ul>
     </nav>
-    <div class="alert alert-danger">
-    <!-- <span> <?php echo $emailErr;?> <br></span>
-    <span> <?php echo $streetErr;?> </span>
-    <span> <?php echo $streetNumberErr; ?> </span>
-    <span> <?php echo $cityErr; ?> </span>
-    <span> <?php echo $zipcodeErr; ?> </span> -->
+    <div class="alert">
+    <span class='error'> <?php echo $emailErr1, $emailErr2; ?> </span>
+    <span class="error"> <?php echo $streetErr;?> </span>
+    <span class="error"> <?php echo $streetNumberErr; ?> </span>
+    <span class="error"> <?php echo $cityErr; ?> </span>
+    <span class="error"> <?php echo $zipcodeErr; ?> </span>
     </div>
     <form method="post" action="<?php echo htmlspecialchars('index.php'); //this protects against injecting harmful code by hackers?>">
         <div class="form-row">

@@ -3,57 +3,68 @@
 declare(strict_types=1);
 //we are going to use session variables so we need to enable sessions
 session_start();
-    if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    //check for submit
-        //if(filter_has_var(INPUT_POST, 'submit')){
-            //echo 'submitted';
-            $email = test_input($_POST['email']);
-            $street = test_input($_POST['street']);
-            $streetNumber = test_input($_POST['streetnumber']);
-            $city = test_input($_POST['city']);
-            $zipcode = test_input($_POST['zipcode']);
-        
-        function test_input($data) {
+//declaring variables and setting them to empty strings
+$email = $street = $streetNumber = $city = $zipcode = "";
+$emailErr1 = $emailErr2 = $streetErr = $streetNumberErr = $cityErr = $zipcodeErr = "";
+
+function test_input($data) {
         $data = trim($data);
         $data = stripslashes($data);
         $data = htmlspecialchars($data);
         return $data;
         }
-            /* $streetErr='';
-            $streetNumberErr = '';
-            $cityErr = '';
-            $zipcodeErr = ''; */
-            //check for email and validity email
-            if(filter_var($email, FILTER_VALIDATE_EMAIL)){
-                $email = $_POST['email'];
-                echo 'email is valid<br>';
-            } else {
-                $emailErr = 'E-mail is missing';
-                echo 'email is invalid<br>';
-            };
 
-            //check required fields
-            if(!empty($street) && !empty($streetNumber) && !empty($city) && !empty($zipcode)){
-                echo 'all fields filled in<br>';
-                $street = $_POST['street'];
-                $streetNumber = $_POST['streetnumber'];
-                $city = $_POST['city'];
-                $zipcode = $_POST['zipcode'];
-            } else {
-                $streetErr = 'Street is missing';
-                $streetNumberErr = 'Street number is missing';
-                $cityErr = 'City is missing';
-                $zipcodeErr = 'Zipcode is missing';
-                echo 'NOT all fields filled in<br>';
-            };
-            //check if street number and zipcode are numbers
-            if(is_numeric($streetNumber) && is_numeric($zipcode)){
-                echo 'streetnumber and zipcode are numbers!<br>';
-            } else {
-                echo 'streetnumber and/or zipcode is NOT a number<br>';
-            };
-        //};
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        //check for email input
+        if(empty($_POST['email'])){
+            $emailErr1 = 'E-mail is required<br>';
+            echo 'email is required<br>';
+        } else {
+            $email = test_input($_POST['email']);
+            //check for email validity
+            if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+                $emailErr2 = 'Invalid email format';
+                echo 'invalid email format';
+            }
+        }
+        if(empty($_POST['street'])){
+            $streetErr = 'Street is required<br>';
+            echo 'street is required<br>';
+        } else {
+            $street = test_input($_POST['street']);
+            echo 'street is valid<br>';
+            }
 
+        if(empty($_POST['streetnumber'])){
+            $streetNumberErr = 'Street number is required<br>';
+            echo 'streetnumber is required<br>';
+        } else {
+            $streetNumber = test_input($_POST['streetnumber']);
+            //check if streetnumber is number format
+            if(!is_numeric($streetNumber)){
+                echo 'streetnumber needs to be a number<br>';
+            }
+            
+        }
+        if(empty($_POST['city'])){
+            $cityErr = 'City is required<br>';
+            echo 'city is required<br>';
+        } else { 
+            $city = test_input($_POST['city']);
+            echo 'city is valid<br>';
+        }
+
+        if(empty($_POST['zipcode'])){
+            $zipcodeErr = 'Zipcode is missing<br>';
+            echo 'zipcode is required<br>';
+        } else {
+            $zipcode = test_input($_POST['zipcode']);
+            //check if zipcode is number format
+            if(!is_numeric($zipcode)){
+                echo 'zipcode needs to be a number<br>';
+            }
+        }
+        
         };
 
 

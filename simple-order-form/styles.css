@@ -1,3 +1,17 @@
-.error{
-    color: red;
+h1 {
+    border: 2px solid black;
+    border-radius: 15px;
+    padding: 0.5rem;
+    text-align: center;
+}
+.nav-item{
+    border: 2px solid blue;
+    border-radius: 15px;
+    padding: 0.5rem;
+    text-align: center;
+    margin: 1rem;
+}
+.error {
+	color: red;
+	font-weight: bold;
 }

@@ -3,9 +3,10 @@
 declare(strict_types=1);
 //we are going to use session variables so we need to enable sessions
 session_start();
+echo session_id();
 //declaring variables and setting them to empty strings
 $email = $street = $streetNumber = $city = $zipcode = "";
-$emailErr1 = $emailErr2 = $streetErr = $streetNumberErr = $cityErr = $zipcodeErr = "";
+$emailErr1 = $emailErr2 = $streetErr = $streetNumberErr1 = $streetNumberErr2 = $cityErr = $zipcodeErr1 = $zipcodeErr2 = "";
 
 function test_input($data) {
         $data = trim($data);
@@ -17,54 +18,59 @@ function test_input($data) {
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         //check for email input
         if(empty($_POST['email'])){
-            $emailErr1 = 'E-mail is required<br>';
+            $emailErr1 = '* E-mail is required<br>';
             echo 'email is required<br>';
         } else {
             $email = test_input($_POST['email']);
             //check for email validity
             if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-                $emailErr2 = 'Invalid email format';
+                $emailErr2 = '* Invalid email format';
                 echo 'invalid email format';
             }
         }
         if(empty($_POST['street'])){
-            $streetErr = 'Street is required<br>';
+            $streetErr = '* Street is required<br>';
             echo 'street is required<br>';
         } else {
             $street = test_input($_POST['street']);
-            echo 'street is valid<br>';
+            //echo 'street is valid<br>';
             }
 
         if(empty($_POST['streetnumber'])){
-            $streetNumberErr = 'Street number is required<br>';
+            $streetNumberErr1 = '* Street number is required<br>';
             echo 'streetnumber is required<br>';
         } else {
             $streetNumber = test_input($_POST['streetnumber']);
             //check if streetnumber is number format
             if(!is_numeric($streetNumber)){
+                $streetNumberErr2 = '* Street number needs to be number format<br>';
                 echo 'streetnumber needs to be a number<br>';
             }
             
         }
         if(empty($_POST['city'])){
-            $cityErr = 'City is required<br>';
+            $cityErr = '* City is required<br>';
             echo 'city is required<br>';
         } else { 
             $city = test_input($_POST['city']);
-            echo 'city is valid<br>';
+            //echo 'city is valid<br>';
         }
 
         if(empty($_POST['zipcode'])){
-            $zipcodeErr = 'Zipcode is missing<br>';
+            $zipcodeErr1 = '* Zipcode is required<br>';
             echo 'zipcode is required<br>';
         } else {
             $zipcode = test_input($_POST['zipcode']);
             //check if zipcode is number format
             if(!is_numeric($zipcode)){
-                echo 'zipcode needs to be a number<br>';
+                $zipcodeErr2 = '* Zipcode needs to be number format<br>';
             }
         }
         
+        $_SESSION['street'] = $street;
+        $_SESSION['streetnumber'] = $streetNumber;
+        $_SESSION['city'] = $city;
+        $_SESSION['zipcode'] = $zipcode;
         };
 
 

@@ -24,18 +24,12 @@
             </li>
         </ul>
     </nav>
-    <div class="alert">
-    <span class='error'> <?php echo $emailErr1, $emailErr2; ?> </span>
-    <span class="error"> <?php echo $streetErr;?> </span>
-    <span class="error"> <?php echo $streetNumberErr; ?> </span>
-    <span class="error"> <?php echo $cityErr; ?> </span>
-    <span class="error"> <?php echo $zipcodeErr; ?> </span>
-    </div>
+    
     <form method="post" action="<?php echo htmlspecialchars('index.php'); //this protects against injecting harmful code by hackers?>">
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="email">E-mail:</label>
-                <input type="text" id="email" name="email" class="form-control" value="<?php echo isset($_POST['email']) ? $_POST['email'] : ''; ?>"/>
+                <label for="email">E-mail:</label><span class='error'><?php echo $emailErr1, $emailErr2; ?></span>
+                <input type="text" id="email" name="email" class="form-control" value="<?php echo $_SESSION['email']; ?>"/>
             </div>
             <div></div>
         </div>
@@ -45,22 +39,22 @@
 
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="street">Street:</label>
-                    <input type="text" name="street" id="street" class="form-control" value="<?php echo isset($_POST['street']) ? $_POST['street'] : ''; ?>">
+                    <label for="street">Street:</label><span class="error"><?php echo $streetErr;?></span>
+                    <input type="text" name="street" id="street" class="form-control" value="<?php echo $_SESSION['street']; ?>">
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="streetnumber">Street number:</label>
-                    <input type="text" id="streetnumber" name="streetnumber" class="form-control" value="<?php echo isset($_POST['streetnumber']) ? $_POST['streetnumber'] : ''; ?>">
+                    <label for="streetnumber">Street number:</label><span class="error"><?php echo $streetNumberErr1, $streetNumberErr2; ?></span>
+                    <input type="text" id="streetnumber" name="streetnumber" class="form-control" value="<?php echo $_SESSION['streetnumber']; ?>">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="city">City:</label>
-                    <input type="text" id="city" name="city" class="form-control" value="<?php echo isset($_POST['city']) ? $_POST['city'] : ''; ?>">
+                    <label for="city">City:</label><span class="error"> <?php echo $cityErr; ?> </span>
+                    <input type="text" id="city" name="city" class="form-control" value="<?php echo $_SESSION['city']; ?>">
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="zipcode">Zipcode</label>
-                    <input type="text" id="zipcode" name="zipcode" class="form-control" value="<?php echo isset($_POST['zipcode']) ? $_POST['zipcode'] : ''; ?>">
+                    <label for="zipcode">Zipcode</label><span class="error"> <?php echo $zipcodeErr1, $zipcodeErr2; ?> </span>
+                    <input type="text" id="zipcode" name="zipcode" class="form-control" value="<?php echo $_SESSION['zipcode']; ?>">
                 </div>
             </div>
         </fieldset>

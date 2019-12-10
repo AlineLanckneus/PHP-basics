@@ -3,13 +3,11 @@
 declare(strict_types=1);
 //we are going to use session variables so we need to enable sessions
 
-
 session_start();
 //declaring variables and setting them to empty strings
     $email = $street = $streetNumber = $city = $zipcode = "";
     $emailErr1 = $emailErr2 = $streetErr = $streetNumberErr1 = $streetNumberErr2 = $cityErr = $zipcodeErr1 = $zipcodeErr2 = "";
 
- 
 function test_input($data) {
         $data = trim($data);
         $data = stripslashes($data);
@@ -21,13 +19,11 @@ function test_input($data) {
         //check for email input
         if(empty($_POST['email'])){
             $emailErr1 = '* E-mail is required<br>';
-            
         } else {
             $email = test_input($_POST['email']);
             //check for email validity
             if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
                 $emailErr2 = '* Invalid email format';
-                
             }
         }
         if(empty($_POST['street'])){

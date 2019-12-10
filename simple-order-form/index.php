@@ -4,7 +4,7 @@ declare(strict_types=1);
 //we are going to use session variables so we need to enable sessions
 session_start();
 //declaring variables and setting them to empty strings
-    $email = $street = $streetNumber = $city = $zipcode = "";
+    $email = $street = $streetNumber = $city = $zipcode = $deliveryType = "";
     $emailErr1 = $emailErr2 = $streetErr = $streetNumberErr1 = $streetNumberErr2 = $cityErr = $zipcodeErr1 = $zipcodeErr2 = "";
     $count = 0;
 function test_input($data) {
@@ -74,9 +74,7 @@ function test_input($data) {
         $_SESSION['streetnumber'] = htmlspecialchars($_POST['streetnumber']);
         $_SESSION['city'] = htmlspecialchars($_POST['city']);
         $_SESSION['zipcode'] = htmlspecialchars($_POST['zipcode']);
-
         };
-
 
 function whatIsHappening() {
     echo '<h2>$_GET</h2>';

@@ -1,12 +1,6 @@
 <?php
-    session_start();
-    
-    $email = $_SESSION['email'];
-    $street = $_SESSION['street'];
-    $streetNumber = $_SESSION['streetnumber'];
-    $city = $_SESSION['city'];
-    $zipcode = $_SESSION['zipcode'];
-
+    echo 'Today is ' . date("l d m Y");
+    echo '<br>The hour is ' . date("h:i:sa");
 ?>
 <!doctype html>
 <html lang="en">
@@ -33,12 +27,16 @@
             </li>
         </ul>
     </nav>
-    
+    <?php
+        if ($count == 5){
+            echo '<div class="alert alert-success">Your order was successfully sent!</div>';
+        }
+    ?>
     <form method="post" action="<?php echo htmlspecialchars('index.php'); //this protects against injecting harmful code by hackers?>">
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="email">E-mail:</label><span class='error'><?php echo $emailErr1, $emailErr2; ?></span>
-                <input type="text" id="email" name="email" class="form-control" value="<?php echo isset($_POST['email']) ? $email : ''; ?>"/>
+                <input type="text" id="email" name="email" class="form-control" <?php if (isset($_SESSION['email'])){ echo 'value='. $_SESSION['email'];} ?> >
             </div>
             <div></div>
         </div>
@@ -49,34 +47,50 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="street">Street:</label><span class="error"><?php echo $streetErr;?></span>
-                    <input type="text" name="street" id="street" class="form-control" value="<?php echo isset($_POST['street']) ? $street : ''; ?>">
+                    <input type="text" name="street" id="street" class="form-control" <?php if (isset($_SESSION['street'])){ echo 'value='. $_SESSION['street'];} ?> >
                 </div>
                 <div class="form-group col-md-6">
                     <label for="streetnumber">Street number:</label><span class="error"><?php echo $streetNumberErr1, $streetNumberErr2; ?></span>
-                    <input type="text" id="streetnumber" name="streetnumber" class="form-control" value="<?php echo isset($_POST['streetnumber']) ? $streetNumber : ''; ?>">
+                    <input type="text" id="streetnumber" name="streetnumber" class="form-control" <?php if (isset($_SESSION['streetnumber'])){ echo 'value='. $_SESSION['streetnumber'];} ?>>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="city">City:</label><span class="error"> <?php echo $cityErr; ?> </span>
-                    <input type="text" id="city" name="city" class="form-control" value="<?php echo isset($_POST['city']) ? $city : ''; ?>">
+                    <input type="text" id="city" name="city" class="form-control" <?php if (isset($_SESSION['city'])){ echo 'value='. $_SESSION['city'];} ?>>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="zipcode">Zipcode</label><span class="error"> <?php echo $zipcodeErr1, $zipcodeErr2; ?> </span>
-                    <input type="text" id="zipcode" name="zipcode" class="form-control" value="<?php echo isset($_POST['zipcode']) ? $zipcode : ''; ?>">
+                    <input type="text" id="zipcode" name="zipcode" class="form-control" <?php if (isset($_SESSION['zipcode'])){ echo 'value='. $_SESSION['zipcode'];} ?>>
                 </div>
             </div>
         </fieldset>
 
         <fieldset>
             <legend>Products</legend>
-            <?php foreach ($products AS $i => $product): ?>
+            <?php 
+            if(empty($_GET) || $_GET['food'] == 1){ 
+            foreach ($products_food AS $i => $product): ?>
                 <label>
                     <input type="checkbox" value="1" name="products[<?php echo $i ?>]"/> <?php echo $product['name'] ?> -
                     &euro; <?php echo number_format($product['price'], 2) ?></label><br />
-            <?php endforeach; ?>
+            <?php endforeach;
+            } else {
+                foreach ($products_drinks AS $i => $product): ?>
+                <label>
+                    <input type="checkbox" value="1" name="products[<?php echo $i ?>]"/> <?php echo $product['name'] ?> -
+                    &euro; <?php echo number_format($product['price'], 2) ?></label><br />
+            <?php endforeach; 
+            } ?>
         </fieldset>
+        <fieldset>
+            <legend>Delivery options</legend>
 
+                <label for="normal">Normal Delivery - 2 hours</label>
+                <input type="radio" name="delivery-type" value="normal" id="delivery-type" checked></br>
+                <label for="express">Express Delivery - 45 minutes</label>
+                <input type="radio" name="delivery-type" value="express" id="delivery-type"></br>
+        </fieldset>
         <button name="submit" type="submit" class="btn btn-primary">Order!</button>
     </form>
 

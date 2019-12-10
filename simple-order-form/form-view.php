@@ -27,16 +27,15 @@
         </ul>
     </nav>
     <?php
-        $chooseDelivery = '';
+        
         if(filter_has_var(INPUT_POST, 'submit')){
             //echo 'submitted';
-            if ($count == 5){
-                
+            if ($isFormValid){
                 echo '<div class="container alert alert-success">Your order was successfully sent!
                 <br>Check your mailbox for a confirmation email!</div>';
                 }
             }
-    
+        
     ?>
     <form method="post" action="<?php echo htmlspecialchars('index.php'); //this protects against injecting harmful code by hackers?>">
         <div class="form-row">
@@ -75,6 +74,7 @@
         <fieldset>
             <legend>Products</legend>
             <?php 
+            
             if(empty($_GET) || $_GET['food'] == 1){ 
             foreach ($products_food AS $i => $product): ?>
                 <label>
@@ -87,7 +87,8 @@
                     <input type="checkbox" value="1" name="products[<?php echo $i ?>]"/> <?php echo $product['name'] ?> -
                     &euro; <?php echo number_format($product['price'], 2) ?></label><br />
             <?php endforeach; 
-            } ?>
+            } 
+            ?>
         </fieldset>
         <fieldset>
             <legend>Delivery options</legend>
@@ -96,21 +97,22 @@
                 <label for="express">Express Delivery - 45 minutes</label>
                 <input type="radio" name="deliveryType" value="express" id="delivery-type"></br>
                 <?php  
+                    
                     date_default_timezone_set('Europe/Amsterdam');
                     $deliveryHour = date("h:i a", strtotime('now + 2 hours'));
                     $deliveryHourExpress = date("h:i a", strtotime('now + 45 minutes'));
                         
                         if(empty($_POST['deliveryType'])){
                             echo '<div class="alert alert-info">please choose one of the delivery options to complete your order</div>';
-                            $chooseDelivery = false;
+                            
                         } elseif ($_POST['deliveryType'] == 'normal'){
                             //echo 'HEY LOOK AT ME';
                             echo '<div class="alert alert-success">Expected delivery at approximately: '. $deliveryHour . '</div>';
-                            $chooseDelivery = true;
+                            
                         } else {
                             //echo 'OH HEY RICHIE RICH';
                             echo '<div class="alert alert-success">Expected delivery at approximately: '. $deliveryHourExpress . '</div>';
-                            $chooseDelivery = true;
+                            
                         }
                     
                 ?>

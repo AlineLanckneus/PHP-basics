@@ -1,5 +1,5 @@
 <?php
-    
+    include('processing.php');
 ?>
 <!doctype html>
 <html lang="en">
@@ -26,17 +26,6 @@
             </li>
         </ul>
     </nav>
-    <?php
-        
-        if(filter_has_var(INPUT_POST, 'submit')){
-            //echo 'submitted';
-            if ($isFormValid){
-                echo '<div class="container alert alert-success">Your order was successfully sent!
-                <br>Check your mailbox for a confirmation email!</div>';
-                }
-            }
-        
-    ?>
     <form method="post" action="<?php echo htmlspecialchars('index.php'); //this protects against injecting harmful code by hackers?>">
         <div class="form-row">
             <div class="form-group col-md-6">
@@ -73,22 +62,11 @@
 
         <fieldset>
             <legend>Products</legend>
-            <?php 
-            
-            if(empty($_GET) || $_GET['food'] == 1){ 
-            foreach ($products_food AS $i => $product): ?>
+            <?php foreach ($products AS $i => $product): ?>
                 <label>
                     <input type="checkbox" value="1" name="products[<?php echo $i ?>]"/> <?php echo $product['name'] ?> -
                     &euro; <?php echo number_format($product['price'], 2) ?></label><br />
-            <?php endforeach;
-            } else {
-                foreach ($products_drinks AS $i => $product): ?>
-                <label>
-                    <input type="checkbox" value="1" name="products[<?php echo $i ?>]"/> <?php echo $product['name'] ?> -
-                    &euro; <?php echo number_format($product['price'], 2) ?></label><br />
-            <?php endforeach; 
-            } 
-            ?>
+            <?php endforeach; ?>
         </fieldset>
         <fieldset>
             <legend>Delivery options</legend>

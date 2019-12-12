@@ -12,7 +12,17 @@ function test_input($data) {
         }
 
     //if(filter_has_var(INPUT_POST, 'submit')){
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    //if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if(isset($_POST['submit'])){ 
+            session_start();
+            $_SESSION['email'] = htmlentities($_POST['email']);
+            $_SESSION['street'] = htmlentities($_POST['street']);
+            $_SESSION['streetnumber'] = htmlentities($_POST['streetnumber']);
+            $_SESSION['city'] = htmlentities($_POST['city']);
+            $_SESSION['zipcode'] = htmlentities($_POST['zipcode']);
+            header('location: form-view.php');
+        }
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $isFormValid = true;
         //check for email input
             if(empty($_POST['email'])){

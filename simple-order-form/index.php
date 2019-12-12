@@ -14,10 +14,7 @@ function whatIsHappening() {
     var_dump($_SESSION);
 }
 whatIsHappening();
-
-
 //your products with their price.
-
 if(empty($_GET) || $_GET['food'] == 1){
     $products = [
         ['name' => 'Club Ham', 'price' => 3.20],
@@ -40,7 +37,5 @@ if (!empty($_COOKIE['totalValue'])){
 } else {
     $totalValue = 0;
 }
-
-
 
 require 'form-view.php';

@@ -4,6 +4,7 @@
     $emailErr1 = $emailErr2 = $streetErr = $streetNumberErr1 = $streetNumberErr2 = $cityErr = $zipcodeErr1 = $zipcodeErr2 = "";
     $count = 0;
     $isFormValid = false;
+    
 function test_input($data) {
         $data = trim($data);
         $data = stripslashes($data);
@@ -13,7 +14,7 @@ function test_input($data) {
 
     //if(filter_has_var(INPUT_POST, 'submit')){
     //if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if(isset($_POST['submit'])){ 
+        /*if(isset($_POST['submit'])){ 
             session_start();
             $_SESSION['email'] = htmlentities($_POST['email']);
             $_SESSION['street'] = htmlentities($_POST['street']);
@@ -21,7 +22,8 @@ function test_input($data) {
             $_SESSION['city'] = htmlentities($_POST['city']);
             $_SESSION['zipcode'] = htmlentities($_POST['zipcode']);
             header('location: form-view.php');
-        }
+        }*/
+
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $isFormValid = true;
         //check for email input

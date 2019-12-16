@@ -1,0 +1,23 @@
+body{
+    background-color: rgb(190, 16, 16);
+}
+
+.container-fluid, .container{
+    margin: 2rem auto;
+    text-align: center;
+}
+.title{
+    font-size: 3rem;
+    font-weight: bold;
+    color: #333;
+}
+.btn-primary{
+    border-radius: 10px;
+    border: 2px solid #fff;
+    margin-right: 2rem;
+    margin-left: 2rem;
+}
+.btn-secondary{
+    border-radius: 10px;
+    border: 2px solid #333;
+}

@@ -29,7 +29,7 @@ include('processing2.php');
         </ul>
     </nav>
     <div class='confirm'><?php echo $confirmMsg; ?></div>
-    <div class='delivery'><?php echo $deliveryMsg; ?></div>
+    
     <form method="post">
         <div class="form-row">
             <div class="form-group col-md-6">
@@ -89,7 +89,7 @@ include('processing2.php');
                 <input type="radio" name="delivery" value="express">
                 <label for="express" name="express"> Express <small>(up to 45 minutes)</small></label>
                 
-
+                <div class="error"><?php echo $errors['delivery'];?></div>
         </fieldset>
 
         <button name="submit" value="submit" type="submit" class="btn btn-primary">Order!</button>

@@ -8,8 +8,9 @@ $city = $_SESSION['city'];
 $zipcode = $_SESSION['zipcode']; */
 
 $email = $street = $streetnumber = $city = $zipcode = '';
-$errors = array('email'=>'', 'street'=>'', 'streetnumber'=>'', 'city'=>'', 'zipcode'=>'');
+$errors = array('email'=>'', 'street'=>'', 'streetnumber'=>'', 'city'=>'', 'zipcode'=>'', 'delivery'=>'');
 $isFormValid = true;
+$deliveryChosen = false;
 $confirmMsg = '';
 $deliveryMsg = '';
 
@@ -77,19 +78,33 @@ if(isset($_POST['submit'])){
             $isFormValid = true;
         }
     }
-    //print_r($errors);
-    if (!(array_filter($errors)) && $isFormValid == true){
+   
+    
+    date_default_timezone_set('Europe/Amsterdam');
+        $deliveryHour = date("h:i a", strtotime('now + 2 hours'));
+        $deliveryHourExpress = date("h:i a", strtotime('now + 45 minutes'));
+                        
+            if(empty($_POST['delivery'])){
+                $deliveryChosen = false;
+                $errors['delivery'] = 'please choose one of the delivery options to complete your order';
+                            
+            } elseif ($_POST['delivery'] == 'normal'){
+                //echo 'HEY LOOK AT ME';
+                $deliveryChosen = true;
+                $deliveryMsg = 'Expected delivery at approximately: '. $deliveryHour;
+                            
+            } else {
+                //echo 'OH HEY RICHIE RICH';
+                $deliveryChosen = true;
+                $deliveryMsg = 'Expected delivery at approximately: '. $deliveryHourExpress;
+                            
+            }
+         //print_r($errors);
+    if (!(array_filter($errors)) && $isFormValid == true && $deliveryChosen == true){
         //echo 'order confirmed!';
-        $confirmMsg = 'your order has been sent successfully!';
+        $confirmMsg = 'your order has been sent successfully!' . $deliveryMsg;
     }
-    $now = date("h:i:sa");
-    $normalD = date("h:i:sa", strtotime('+ 2 hours', $now));
-    if($_POST['delivery'] == 'normal'){
-        $deliveryMsg = 'delivery will be at ' . $normalD;
-    }
-    if($_POST['delivery'] == 'express'){
-        $deliveryMsg = date("h:i:sa") + 2700 . 'you chose express delivery';
-    }
+                
 }
 
 setcookie('totalValue', $totalValue, time() + 86400);

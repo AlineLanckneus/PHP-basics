@@ -1,0 +1,10 @@
+div.error {
+	color: red;
+}
+
+.confirm{
+    font-size: 2rem;
+    text-transform: uppercase;
+    background-color: rgb(7, 248, 27);
+    color: #fff;
+}

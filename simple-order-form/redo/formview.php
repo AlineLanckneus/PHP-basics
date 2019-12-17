@@ -12,6 +12,7 @@ include('processing2.php');
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" type="text/css"
           rel="stylesheet"/>
+          <link rel="stylesheet" href="styles.css">
     <title>Order food & drinks</title>
 </head>
 <body>
@@ -27,12 +28,13 @@ include('processing2.php');
             </li>
         </ul>
     </nav>
+    <div class='confirm'><?php echo $confirmMsg; ?></div>
     <form method="post">
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="email">E-mail:</label>
                 <input type="text" id="email" name="email" class="form-control" value="<?php echo $email; ?>"/>
-                <div><?php echo $errors['email'];?></div>
+                <div class="error"><?php echo $errors['email'];?></div>
             </div>
             <div></div>
         </div>
@@ -44,24 +46,24 @@ include('processing2.php');
                 <div class="form-group col-md-6">
                     <label for="street">Street:</label>
                     <input type="text" name="street" id="street" class="form-control" value="<?php echo $street; ?>">
-                    <div><?php echo $errors['street'];?></div>
+                    <div class="error"><?php echo $errors['street'];?></div>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="streetnumber">Street number:</label>
                     <input type="text" id="streetnumber" name="streetnumber" class="form-control" value="<?php echo $streetnumber; ?>">
-                    <div><?php echo $errors['streetnumber'];?></div>
+                    <div class="error"><?php echo $errors['streetnumber'];?></div>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="city">City:</label>
                     <input type="text" id="city" name="city" class="form-control" value="<?php echo $city; ?>">
-                    <div><?php echo $errors['city'];?></div>
+                    <div class="error"><?php echo $errors['city'];?></div>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="zipcode">Zipcode</label>
                     <input type="text" id="zipcode" name="zipcode" class="form-control" value="<?php echo $zipcode; ?>">
-                    <div><?php echo $errors['zipcode'];?></div>
+                    <div class="error"><?php echo $errors['zipcode'];?></div>
                 </div>
             </div>
         </fieldset>
@@ -73,6 +75,20 @@ include('processing2.php');
                     <input type="checkbox" value="1" name="products[<?php echo $i ?>]"/> <?php echo $product['name'] ?> -
                     &euro; <?php echo number_format($product['price'], 2) ?></label><br />
             <?php endforeach; ?>
+        </fieldset>
+
+        <fieldset>
+                <legend>Delivery Options</legend>
+
+                <input type="radio" name="delivery" value="normal">
+                <label for="normal"> Normal Delivery <small>(up to 2 hours)</small></label>
+                
+                </br>
+
+                <input type="radio" name="delivery" value="express">
+                <label for="express" name="express"> Express <small>(up to 45 minutes)</small></label>
+                
+
         </fieldset>
 
         <button name="submit" value="submit" type="submit" class="btn btn-primary">Order!</button>

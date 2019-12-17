@@ -82,12 +82,12 @@ include('processing2.php');
                 <legend>Delivery Options</legend>
 
                 <input type="radio" name="delivery" value="normal">
-                <label for="normal"> Normal Delivery <small>(up to 2 hours)</small></label>
+                <label for="normal"> Normal Delivery (2 EURO)<small>(up to 2 hours)</small></label>
                 
                 </br>
 
                 <input type="radio" name="delivery" value="express">
-                <label for="express" name="express"> Express <small>(up to 45 minutes)</small></label>
+                <label for="express" name="express"> Express (4 EURO)<small>(up to 45 minutes)</small></label>
                 
                 <div class="error"><?php echo $errors['delivery'];?></div>
         </fieldset>

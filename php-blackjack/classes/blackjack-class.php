@@ -8,7 +8,7 @@
         
             // add a card between 1-11
         public function Hit(){
-
+            $this->score = $score + rand(1,11);
         }
             // end of your turn and start the dealer's turn (your point total is saved)
         public function Stand(){

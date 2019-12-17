@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/styles.css">
+    
     <title>PHP Blackjack Challenge</title>
 </head>
 <body>
@@ -22,11 +22,22 @@
         <div class="container-fluid">
             <form action="includes/blackjack.inc.php" method="post">
                 
-                <button class="btn btn-primary" type="button" name="hit">Hit</button>
-                <button class="btn btn-primary" type="button" name="stand">Stand</button>
-                <button class="btn btn-primary" type="button" name="surrender">Surrender</button>
+                <button class="btn btn-primary" type="button" name="button" value="hit">Hit</button>
+                <button class="btn btn-primary" type="button" name="button" value="stand">Stand</button>
+                <button class="btn btn-primary" type="button" name="button" value="surrender">Surrender</button>
             </form>
         </div>
-    </div>
+
+        <div class="container-fluid">
+            <div class="row"> 
+                <div class="col-6 points">
+                <header>Player</header> 
+                </div>
+                <div class="col-6 points">
+                <header>Dealer</header>
+                </div>
+            </div>
+        </div>
+    
 </body>
 </html>

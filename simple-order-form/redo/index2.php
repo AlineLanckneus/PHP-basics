@@ -41,8 +41,6 @@ if(empty($_GET['food']) || $_GET['food'] == 1){
         ['name' => 'Ice-tea', 'price' => 3],
     ];
 }
-if($_POST['delivery'] == 'normal'){
-    
-}
+
 $totalValue = $_COOKIE['totalValue'];
 require 'formview.php';

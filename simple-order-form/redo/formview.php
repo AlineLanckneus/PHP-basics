@@ -29,6 +29,7 @@ include('processing2.php');
         </ul>
     </nav>
     <div class='confirm'><?php echo $confirmMsg; ?></div>
+    <div class='delivery'><?php echo $deliveryMsg; ?></div>
     <form method="post">
         <div class="form-row">
             <div class="form-group col-md-6">

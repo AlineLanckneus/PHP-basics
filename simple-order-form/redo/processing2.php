@@ -11,6 +11,7 @@ $email = $street = $streetnumber = $city = $zipcode = '';
 $errors = array('email'=>'', 'street'=>'', 'streetnumber'=>'', 'city'=>'', 'zipcode'=>'');
 $isFormValid = true;
 $confirmMsg = '';
+$deliveryMsg = '';
 
 if(isset($_POST['submit'])){
 
@@ -80,6 +81,14 @@ if(isset($_POST['submit'])){
     if (!(array_filter($errors)) && $isFormValid == true){
         //echo 'order confirmed!';
         $confirmMsg = 'your order has been sent successfully!';
+    }
+    $now = date("h:i:sa");
+    $normalD = date("h:i:sa", strtotime('+ 2 hours', $now));
+    if($_POST['delivery'] == 'normal'){
+        $deliveryMsg = 'delivery will be at ' . $normalD;
+    }
+    if($_POST['delivery'] == 'express'){
+        $deliveryMsg = date("h:i:sa") + 2700 . 'you chose express delivery';
     }
 }
 

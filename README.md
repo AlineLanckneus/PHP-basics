@@ -2,8 +2,8 @@ These are my solutions to the PHP-basics challenges
 
 Each challenge has its own folder:
 
-- debugging
+- debugging/
 
-- simple order form
+- simple-order-form/
 
-- blackjack
+- blackjack/

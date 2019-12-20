@@ -22,5 +22,6 @@
     <form action="game.php" method="post"> 
         <input type="button" name="submit" value="Start The Game!"></input>
     </form>
+    
 </body>
 </html>

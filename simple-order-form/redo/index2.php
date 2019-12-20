@@ -2,7 +2,7 @@
 //this line makes PHP behave in a more strict way
 declare(strict_types=1);
 //we are going to use session variables so we need to enable sessions
-session_start();
+//session_start();
 if(!empty($_POST)){ //this removed the errors when first loading the page
 $_SESSION['email'] = $_POST['email'];
 $_SESSION['street'] = $_POST['street'];

@@ -1,3 +1,7 @@
+<?php
+    include('blackjack.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,5 +12,18 @@
 </head>
 <body>
     <h1>Let's Play!</h1>
+
+    <?php
+
+    $player = new Blackjack();
+
+    $dealer = new Blackjack();
+
+
+
+
+
+
+    ?>
 </body>
 </html>

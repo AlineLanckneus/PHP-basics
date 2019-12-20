@@ -1,7 +1,9 @@
-# PHP-basics
+These are my solutions to the PHP-basics challenges
 
-this is my attempt at the simple order form
+Each challenge has its own folder:
 
-- customers are able to order food or drinks
-- after filling in their contact details they get a confirmation message
-- I haven't figured out the mail function yet though
+- debugging
+
+- simple order form
+
+- blackjack

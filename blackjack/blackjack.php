@@ -5,6 +5,8 @@
 
         public $score = 0;
         public $isTurn = false;
+        public $hasSurrendered = false;
+        public $amountOfWins = 0;
 
         // add a card between 1-11
         public function hit(){
@@ -17,8 +19,12 @@
         // player surrenders the game
         public function surrender(){
             $this->isTurn = false;
+            $this->hasSurrendered = true;
         }
-
+        public function reset(){
+            $this->score = 0;
+            $this->hasSurrendered = false;
+        }
 
     }
 

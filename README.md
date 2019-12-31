@@ -7,3 +7,5 @@ Each challenge has its own folder:
 - simple-order-form/
 
 - blackjack/
+
+- mysql/

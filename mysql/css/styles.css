@@ -1,7 +1,25 @@
-*{
-    margin: 1rem;
+* {
+	margin: 1rem;
+	font-size: 16px;
+	font-family: monospace;
+	background-color: rgb(181, 238, 181);
 }
 
-table{
-    border: 1px solid black;
+.mainTable {
+	width: 100%;
+}
+table.mainTable,
+tr,
+td {
+    border-collapse: collapse;
+	padding: 0.5rem;
+}
+tr {
+	border: 1px solid black;
+}
+thead {
+	font-weight: bold;
+}
+form {
+	color: blue;
 }

@@ -1,7 +1,5 @@
 <?php
     include('./connection.php');
-
-    //PDO query
 ?>
 
         <!DOCTYPE html>
@@ -10,11 +8,11 @@
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <meta http-equiv="X-UA-Compatible" content="ie=edge">
-            <link rel="stylesheet" href="css/styles.css">
+            <link rel="stylesheet" type="text/css" href="css/styles.css">
             <title>Table</title>
         </head>
         <body>
-            <table>
+            <table class="mainTable">
                 <thead>
                     <tr>
                         <td>First Name</td>
@@ -36,7 +34,7 @@
                         echo '<td>' . $row['gender'] . '</td>';
                         echo '<td>' . $row['email'] . '</td>';
                         echo '<td>' . $row['pref_language'] . '</td></tr>';
-                } ?>
+                        } ?>
                 </tbody>
             </table>
         </body>

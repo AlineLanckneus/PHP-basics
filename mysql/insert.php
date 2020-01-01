@@ -1,5 +1,5 @@
 <?php
-    include('./connection.php');
+    require_once('./connection.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,6 +44,8 @@
             <input type="text" name="pref_language" id="language">
         </p>
         <input type="submit" value="Submit">
+
+        <a href="./index.php">Go</a>
     </form>
 </body>
 </html>

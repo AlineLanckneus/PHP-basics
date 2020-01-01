@@ -34,7 +34,7 @@
         }
 
         //var_dump($pdo);
-        unset($pdo);
+        //unset($pdo);
 
         
         //PDO query

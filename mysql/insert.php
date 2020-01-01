@@ -1,6 +1,5 @@
 <?php
     include('./connection.php');
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,10 +35,10 @@
             <label for="emailAddress">Email Address:</label>
             <input type="text" name="email" id="emailAddress">
         </p>
-        <p>
+        <!-- <p>
             <label for="created_at">Created At:</label>
-            <input type="date" name="created_at" id="created_at" value="<?php echo date("Y-m-d"); ?>">
-        </p>
+            <input type="date" name="created_at" id="created_at" value="<?php echo date("Y-m-d"); ?>" disabled>
+        </p> -->
         <p>
             <label for="preferred_language">Preferred Language:</label>
             <input type="text" name="pref_language" id="language">

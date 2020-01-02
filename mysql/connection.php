@@ -1,11 +1,14 @@
 <?php
+    function connect($pdo){ 
+        global $pdo;
+       
+        if(!empty($_POST) && isset($_POST['submit'])){ 
 
-    //function openConnection() {
-        
             $dbhost     = "localhost";
             $dbuser     = "test_user";
             $dbpass     = "123";
             $db         = "becode";
+
 
         try { 
             //set DSN
@@ -18,33 +21,41 @@
             $sql = "INSERT INTO NewTable (first_name, last_name, username, gender, email, pref_language) VALUES (:first_name, :last_name, :username, :gender, :email, :pref_language)";
             $stmt = $pdo->prepare($sql);
 
-            $stmt->bindParam(':first_name', $_REQUEST['first_name']);
-            $stmt->bindParam(':last_name', $_REQUEST['last_name']);
-            $stmt->bindParam(':username', $_REQUEST['username']);
-            $stmt->bindParam(':gender', $_REQUEST['gender']);
-            $stmt->bindParam(':email', $_REQUEST['email']);
-            $stmt->bindParam(':pref_language', $_REQUEST['pref_language']);
-            //$stmt->bindParam(':created_at', $_REQUEST['created_at']);
+            
+                $stmt->bindParam(':first_name', $_POST['first_name']);
+                $stmt->bindParam(':last_name', $_POST['last_name']);
+                $stmt->bindParam(':username', $_POST['username']);
+                $stmt->bindParam(':gender', $_POST['gender']);
+                $stmt->bindParam(':email', $_POST['email']);
+                $stmt->bindParam(':pref_language', $_POST['pref_language']);
+                //$stmt->bindParam(':created_at', $_REQUEST['created_at']);
 
-            $stmt->execute();
-            echo 'records inserted successfully';
-        } 
-        catch(PDOException $e){
-            die("error: could not execute $sql " . $e->getMessage());
+                $stmt->execute();
+                echo 'form submitted and records inserted successfully';
+
+                $_POST = array(); //clear input fields
         }
+            catch(PDOException $e){
+                die("error: could not execute $sql " . $e->getMessage());
+            }
+        
 
-        //var_dump($pdo);
+           
+
+        }
+    }
         //unset($pdo);
 
         
-        //PDO query
+         //PDO query
 
-        //$stmt = $pdo->query('SELECT * FROM student');
+           /* $stmt = $pdo->query('SELECT * FROM student');
 
-        /* while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-            echo $row['email'] . '<br>';
-        }
- */
+            while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                echo $row['email'] . '<br>';
+            }
+
+ 
         /* while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             echo $row['first_name'] . '<br>';
         } */

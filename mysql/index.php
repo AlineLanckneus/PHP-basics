@@ -25,9 +25,9 @@
                 </thead>
                 <tbody>
                     <?php
-                    $stmt = $pdo->query('SELECT * FROM NewTable');
+                    $result = $pdo->query('SELECT * FROM NewTable');
 
-                    while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                    while($row = $result->fetch(PDO::FETCH_ASSOC)){
                         echo '<tr><td>' . $row['first_name'] . '</td>';
                         echo '<td>' . $row['last_name'] . '</td>';
                         echo '<td>' . $row['username'] . '</td>';

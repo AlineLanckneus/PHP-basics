@@ -1,14 +1,13 @@
 <?php
-    function connect($pdo){ 
+    
         global $pdo;
-       
+
         if(!empty($_POST) && isset($_POST['submit'])){ 
 
             $dbhost     = "localhost";
             $dbuser     = "test_user";
             $dbpass     = "123";
             $db         = "becode";
-
 
         try { 
             //set DSN
@@ -43,7 +42,7 @@
            
 
         }
-    }
+    
         //unset($pdo);
 
         

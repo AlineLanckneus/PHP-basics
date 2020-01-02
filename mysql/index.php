@@ -1,5 +1,14 @@
 <?php
     include('./connection.php');
+    // need to include this block of code for index to work!
+    $dbhost     = "localhost";
+            $dbuser     = "test_user";
+            $dbpass     = "123";
+            $db         = "becode";
+            //set DSN
+            $dsn = 'mysql:host=' . $dbhost . ';dbname=' . $db;
+            //create PDO instance
+            $pdo = new PDO($dsn, $dbuser, $dbpass);
 ?>
 
         <!DOCTYPE html>

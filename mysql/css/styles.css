@@ -25,3 +25,10 @@ th {
 	margin: 0 auto;
 	width: 90vw;
 }
+.meme{
+	width: 300px;
+	height: auto;
+}
+.profilePage{
+	background-color: rgb(76, 143, 230);
+}

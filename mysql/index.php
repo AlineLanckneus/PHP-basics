@@ -17,35 +17,48 @@
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
             <link rel="stylesheet" type="text/css" href="css/styles.css">
             <title>Table</title>
         </head>
         <body>
-            <table class="mainTable">
-                <thead>
-                    <tr>
-                        <td>First Name</td>
-                        <td>Last Name</td>
-                        <td>Username</td>
-                        <td>Gender</td>
-                        <td>Email</td>
-                        <td>Preferred Language</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $result = $pdo->query('SELECT * FROM NewTable');
+            <div class="table-responsive"> 
+                <table class="mainTable table-striped table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">Gender</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Preferred Language</th>
+                            <th scope="col">Avatar</th>
+                            <th scope="col">Video</th>
+                            <th scope="col">Quote</th>
+                            <th scope="col">Quote Author</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $result = $pdo->query('SELECT * FROM NewTable');
 
-                    while($row = $result->fetch(PDO::FETCH_ASSOC)){
-                        echo '<tr><td>' . $row['first_name'] . '</td>';
-                        echo '<td>' . $row['last_name'] . '</td>';
-                        echo '<td>' . $row['username'] . '</td>';
-                        echo '<td>' . $row['gender'] . '</td>';
-                        echo '<td>' . $row['email'] . '</td>';
-                        echo '<td>' . $row['pref_language'] . '</td></tr>';
-                        } ?>
-                </tbody>
-            </table>
+                        while($row = $result->fetch(PDO::FETCH_ASSOC)){
+                            echo '<tr><td>' . $row['first_name'] . '</td>';
+                            echo '<td>' . $row['last_name'] . '</td>';
+                            echo '<td>' . $row['username'] . '</td>';
+                            echo '<td>' . $row['gender'] . '</td>';
+                            echo '<td>' . $row['email'] . '</td>';
+                            echo '<td>' . $row['pref_language'] . '</td>';
+                            echo '<td>' . $row['avatar'] . '</td>';
+                            echo '<td>' . $row['video'] . '</td>';
+                            echo '<td>' . $row['quote'] . '</td>';
+                            echo '<td>' . $row['quote_author'] . '</td></tr>';
+                            
+                            } ?>
+                    </tbody>
+                </table>
+            </div>
+            <a href="./insert.php">Go back to login page</a>
         </body>
         </html>
 

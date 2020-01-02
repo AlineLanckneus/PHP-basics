@@ -2,7 +2,6 @@
 	margin: 1rem;
 	font-size: 16px;
 	font-family: monospace;
-	background-color: rgb(224, 240, 224);
 }
 
 .mainTable {
@@ -11,7 +10,7 @@
 table.mainTable,
 tr,
 td {
-    border-collapse: collapse;
+	border-collapse: collapse;
 	padding: 0.5rem;
 }
 tr {
@@ -20,10 +19,9 @@ tr {
 thead {
 	font-weight: bold;
 }
-form {
-	color: blue;
+th {
+	text-align: center;
 }
-.formContainer{
+.formContainer {
 	display: flex;
-	
 }

@@ -1,5 +1,6 @@
 <?php
     require('./connection.php');
+    session_start();
     if(!empty($_POST) && isset($_POST['submit'])){
     try { 
         $pdo = getPdo();

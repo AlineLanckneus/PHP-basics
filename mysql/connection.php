@@ -1,26 +1,32 @@
 <?php
     
         global $pdo;
+        function getPdo(){ 
+            /* if(!empty($_POST) && isset($_POST['submit'])){  */
 
-        if(!empty($_POST) && isset($_POST['submit'])){ 
+                $dbhost     = "localhost";
+                $dbuser     = "test_user";
+                $dbpass     = "123";
+                $db         = "becode";
 
-            $dbhost     = "localhost";
-            $dbuser     = "test_user";
-            $dbpass     = "123";
-            $db         = "becode";
-
-        try { 
-            //set DSN
-            $dsn = 'mysql:host=' . $dbhost . ';dbname=' . $db;
-            //create PDO instance
-            $pdo = new PDO($dsn, $dbuser, $dbpass);
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
             
+                //set DSN
+                $dsn = 'mysql:host=' . $dbhost . ';dbname=' . $db;
+                //create PDO instance
+                $pdo = new PDO($dsn, $dbuser, $dbpass);
+                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+
+                return $pdo;
+            }
+        //}
+
+        /* try { 
+        $pdo = getPdo();
+            //query
             $sql = "INSERT INTO NewTable (first_name, last_name, username, gender, email, pref_language) VALUES (:first_name, :last_name, :username, :gender, :email, :pref_language)";
             $stmt = $pdo->prepare($sql);
 
-            
                 $stmt->bindParam(':first_name', $_POST['first_name']);
                 $stmt->bindParam(':last_name', $_POST['last_name']);
                 $stmt->bindParam(':username', $_POST['username']);
@@ -37,11 +43,8 @@
             catch(PDOException $e){
                 die("error: could not execute $sql " . $e->getMessage());
             }
+ */
         
-
-           
-
-        }
     
         //unset($pdo);
 

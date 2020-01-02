@@ -1,5 +1,30 @@
 <?php
-    include_once('./connection.php');
+    require('./connection.php');
+    if(!empty($_POST) && isset($_POST['submit'])){
+    try { 
+        $pdo = getPdo();
+            //query
+            $sql = "INSERT INTO NewTable (first_name, last_name, username, gender, email, pref_language) VALUES (:first_name, :last_name, :username, :gender, :email, :pref_language)";
+            $stmt = $pdo->prepare($sql);
+
+                $stmt->bindParam(':first_name', $_POST['first_name']);
+                $stmt->bindParam(':last_name', $_POST['last_name']);
+                $stmt->bindParam(':username', $_POST['username']);
+                $stmt->bindParam(':gender', $_POST['gender']);
+                $stmt->bindParam(':email', $_POST['email']);
+                $stmt->bindParam(':pref_language', $_POST['pref_language']);
+                //$stmt->bindParam(':created_at', $_REQUEST['created_at']);
+
+                $stmt->execute();
+                echo 'form submitted and records inserted successfully';
+
+                $_POST = array(); //clear input fields
+        }
+            catch(PDOException $e){
+                die("error: could not execute $sql " . $e->getMessage());
+            } 
+        }
+    /* var_dump($_SESSION); */
 ?>
 <!DOCTYPE html>
 <html lang="en">

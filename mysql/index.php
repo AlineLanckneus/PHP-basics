@@ -1,5 +1,7 @@
 <?php
-    include('./connection.php');
+    require('./connection.php');
+
+    session_start();
     // need to include this block of code for index to work!
     $dbhost     = "localhost";
             $dbuser     = "test_user";
@@ -22,43 +24,38 @@
             <title>Table</title>
         </head>
         <body>
-            <div class="table-responsive"> 
-                <table class="mainTable table-striped table-bordered">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">First Name</th>
-                            <th scope="col">Last Name</th>
-                            <th scope="col">Username</th>
-                            <th scope="col">Gender</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Preferred Language</th>
-                            <th scope="col">Avatar</th>
-                            <th scope="col">Video</th>
-                            <th scope="col">Quote</th>
-                            <th scope="col">Quote Author</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        $result = $pdo->query('SELECT * FROM NewTable');
+            <div class="container"> 
+                <div class="table-responsive"> 
+                    <table class="mainTable table-striped table-bordered">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">First Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">Username</th>
+                                <th scope="col">Gender</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Language</th>
+                                <th scope="col">User id</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $result = $pdo->query('SELECT * FROM NewTable');
 
-                        while($row = $result->fetch(PDO::FETCH_ASSOC)){
-                            echo '<tr><td>' . $row['first_name'] . '</td>';
-                            echo '<td>' . $row['last_name'] . '</td>';
-                            echo '<td>' . $row['username'] . '</td>';
-                            echo '<td>' . $row['gender'] . '</td>';
-                            echo '<td>' . $row['email'] . '</td>';
-                            echo '<td>' . $row['pref_language'] . '</td>';
-                            echo '<td>' . $row['avatar'] . '</td>';
-                            echo '<td>' . $row['video'] . '</td>';
-                            echo '<td>' . $row['quote'] . '</td>';
-                            echo '<td>' . $row['quote_author'] . '</td></tr>';
-                            
-                            } ?>
-                    </tbody>
-                </table>
+                            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+                                echo '<tr><td>' . $row['first_name'] . '</td>';
+                                echo '<td>' . $row['last_name'] . '</td>';
+                                echo '<td>' . $row['username'] . '</td>';
+                                echo '<td>' . $row['gender'] . '</td>';
+                                echo '<td>' . $row['email'] . '</td>';
+                                echo '<td>' . $row['pref_language'] . '</td>';
+                                echo '<td><a href="./profile.php?user=' . $row['id'] . '" >' . $row['id'] . '</a></td></tr>';
+                                } ?>
+                        </tbody>
+                    </table>
+                </div>
+                <a href="./insert.php">Go back to login page</a>
             </div>
-            <a href="./insert.php">Go back to login page</a>
         </body>
         </html>
 

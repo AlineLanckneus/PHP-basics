@@ -1,26 +1,23 @@
 <?php
     
         global $pdo;
+        //put code below in function to call it more easily
         function getPdo(){ 
             /* if(!empty($_POST) && isset($_POST['submit'])){  */
-
                 $dbhost     = "localhost";
                 $dbuser     = "test_user";
                 $dbpass     = "123";
                 $db         = "becode";
-
-            
                 //set DSN
                 $dsn = 'mysql:host=' . $dbhost . ';dbname=' . $db;
                 //create PDO instance
                 $pdo = new PDO($dsn, $dbuser, $dbpass);
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-
                 return $pdo;
             }
         //}
-
+            //moved code below to insert.php
         /* try { 
         $pdo = getPdo();
             //query
